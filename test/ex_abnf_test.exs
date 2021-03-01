@@ -16,7 +16,7 @@
 defmodule ABNF_Test do
   alias ABNF.CaptureResult, as: Res
   use ExUnit.Case, async: true
-  require Logger
+
   @on_load :init
 
   test "raises for incorrect line endings" do
@@ -396,7 +396,6 @@ defmodule ABNF_Test do
     ]
 
     Enum.each(addresses, fn a ->
-      Logger.debug("Testing IPv6: #{inspect(a)}")
       string = a ++ 'rest'
 
       %Res{
