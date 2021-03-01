@@ -115,7 +115,7 @@ defmodule ABNF.Interpreter do
                   " when running code #{inspect(e.code)}"
               )
 
-              stacktrace = System.stacktrace()
+              stacktrace = __STACKTRACE__
               reraise ex, stacktrace
           end
         end

@@ -5,9 +5,9 @@ defmodule ABNF.Mixfile do
     [
       app: :ex_abnf,
       name: "ex_abnf",
-      source_url: "https://github.com/marcelog/ex_abnf",
-      version: "0.3.0",
-      elixir: ">= 1.0.0",
+      source_url: "https://github.com/VoiSmart/ex_abnf",
+      version: "1.0.0",
+      elixir: "~> 1.7",
       description: description(),
       package: package(),
       deps: deps()
@@ -15,13 +15,13 @@ defmodule ABNF.Mixfile do
   end
 
   def application do
-    [applications: [:logger]]
+    [extra_applications: [:logger, :crypto]]
   end
 
   defp deps do
     [
-      {:earmark, "~> 1.0.3", only: :dev},
-      {:ex_doc, "~> 0.14.5", only: :dev}
+      {:earmark, "~> 1.4", only: :dev},
+      {:ex_doc, "~> 0.23", only: :dev}
     ]
   end
 
@@ -35,10 +35,10 @@ defmodule ABNF.Mixfile do
   defp package do
     [
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
-      maintainers: ["Marcelo Gornstein"],
+      maintainers: ["Marcelo Gornstein", "Flavio Grossi", "Matteo Brancaleoni"],
       licenses: ["Apache 2.0"],
       links: %{
-        "GitHub" => "https://github.com/marcelog/ex_abnf"
+        "GitHub" => "https://github.com/VoiSmart/ex_abnf"
       }
     ]
   end
