@@ -56,7 +56,7 @@ To use it in your Mix projects, first add it as a dependency:
 
 ```elixir
 def deps do
-  [{:ex_abnf, "~> 0.2.8"}]
+  [{:ex_abnf, git: "https://github.com/VoiSmart/ex_abnf.git", tag: "1.0.0"}]
 end
 ```
 Then run mix deps.get to install it.
