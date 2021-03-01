@@ -2,14 +2,16 @@ defmodule ABNF.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :ex_abnf,
-     name: "ex_abnf",
-     source_url: "https://github.com/marcelog/ex_abnf",
-     version: "0.3.0",
-     elixir: ">= 1.0.0",
-     description: description(),
-     package: package(),
-     deps: deps()]
+    [
+      app: :ex_abnf,
+      name: "ex_abnf",
+      source_url: "https://github.com/marcelog/ex_abnf",
+      version: "0.3.0",
+      elixir: ">= 1.0.0",
+      description: description(),
+      package: package(),
+      deps: deps()
+    ]
   end
 
   def application do
