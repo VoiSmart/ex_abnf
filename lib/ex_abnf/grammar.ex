@@ -19,7 +19,8 @@ defmodule ABNF.Grammar do
 
   alias ABNF.Core, as: Core
   alias ABNF.Util, as: Util
-  @type t :: map()
+
+  @type t :: map
 
   # rulelist = 1*( rule / (*WSP c-nl) )
   # As described in the Errata #3076
@@ -27,7 +28,7 @@ defmodule ABNF.Grammar do
   Builds a Grammar.t from the given input (an ABNF text grammar). You should
   never use this one directly but use the ones in the ABNF module instead.
   """
-  @spec rulelist(charlist) :: t
+  @spec rulelist(charlist) :: {t, charlist()}
   def rulelist(input) do
     {module_code, rest} =
       case code(input) do
@@ -38,7 +39,7 @@ defmodule ABNF.Grammar do
     rulelist_tail(module_code, rest)
   end
 
-  defp rulelist_tail(module_code, input, acc \\ %{}, last \\ nil) do
+  defp rulelist_tail(module_code, input, acc \\ %{}) do
     case rule(input) do
       nil ->
         rest = zero_or_more_wsp(input)
@@ -103,15 +104,8 @@ defmodule ABNF.Grammar do
             Module.create(module_name, funs, Macro.Env.location(__ENV__))
             {acc, input}
 
-          {comments, rest} ->
-            case last do
-              nil ->
-                rulelist_tail(module_code, rest, acc)
-
-              last ->
-                last = add_comments(last, comments)
-                rulelist_tail(module_code, rest, Map.put(acc, last.name, last))
-            end
+          {_comments, rest} ->
+            rulelist_tail(module_code, rest, acc)
         end
 
       {r, rest} ->
@@ -337,9 +331,6 @@ defmodule ABNF.Grammar do
               _ ->
                 nil
             end
-
-          _ ->
-            nil
         end
 
       _ ->
@@ -366,9 +357,6 @@ defmodule ABNF.Grammar do
               _ ->
                 nil
             end
-
-          _ ->
-            nil
         end
 
       _ ->

@@ -40,14 +40,13 @@ defmodule ABNF do
     case Grammar.rulelist(input) do
       {rules, ''} -> rules
       {_rlist, rest} -> throw({:incomplete_parsing, rest})
-      _ -> throw({:invalid_grammar, input})
     end
   end
 
   @doc """
   Parses an input given a gramar, looking for the given rule.
   """
-  @spec apply(Grammar.t(), String.t(), [byte], term) :: CaptureResult.t()
+  @spec apply(Grammar.t(), String.t(), [byte], term) :: CaptureResult.t() | no_return()
   def apply(grammar, rule, input, state \\ nil) do
     Interpreter.apply(grammar, rule, input, state)
   end
