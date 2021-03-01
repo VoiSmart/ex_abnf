@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/marcelog/ex_abnf.svg)](https://travis-ci.org/marcelog/ex_abnf)
+[![Build Status](https://travis-ci.org/VoiSmart/ex_abnf.svg?branch=develop)](https://travis-ci.org/VoiSmart/ex_abnf)
 
 ## About
 
